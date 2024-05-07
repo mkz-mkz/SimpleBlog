@@ -1,0 +1,33 @@
+194.58.104.150
+
+sudo lsof -i :5432
+
+sudo lsof -i TCP
+
+sudo kill 320
+
+docker system prune
+
+docker rm -vf $(docker ps -a -q)
+
+docker rmi -f $(docker images -a -q)
+
+docker exec -it db psql -h 0.0.0.0 -U postgres
+
+postgres=# \l
+
+postgres=# CREATE DATABASE simple_blog;
+
+Проверяем в ДиБивере что новая база создана и в ней нет таблиц
+В браузере джанго адинмка выдаст ошибку в дебаг моде, что нет таблицы django_sessions
+теперь можно делать миграции
+
+docker exec -it app python /app/manage.py makemigrations
+
+docker exec -it app python /app/manage.py migrate
+
+docker exec -it app python /app/manage.py createsuperuser
+
+
+local imac в папке с проектом in terminal
+git init

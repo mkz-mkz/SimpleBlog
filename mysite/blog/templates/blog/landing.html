@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'css/blog.css' %}" rel="stylesheet">
+</head>
+<body>
+<div id="content">
+    <p>This is the landing page</p>
+    <br>
+    <p>here should be link for the <a href="{% url 'blog:post_list' %}">blog</a></p>
+    <br>
+</div>
+<div id="sidebar">
+    <h2>My <a href="{% url 'blog:post_list' %}">blog</a></h2>
+    <p>This is my blog.</p>
+</div>
+</body>
+</html>
