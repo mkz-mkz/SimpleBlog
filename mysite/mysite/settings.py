@@ -27,6 +27,8 @@ SECRET_KEY = 'django-insecure-$eimy514j&02%w+rp90vudwxqwxunnv8(0e36!i*4q_k#9ovm-
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    "*",
+    "194.58.104.150",
     "localhost",
     "127.0.0.1",
     "0.0.0.0",
@@ -91,7 +93,7 @@ DATABASES = {
         "NAME": "simple_blog",
         "USER": "postgres",
         "PASSWORD": "postgres",
-        "HOST": "0.0.0.0",
+        "HOST": "db",
         "PORT": 5432,
     }
 }

@@ -8,6 +8,9 @@ __pycache__/
 # Pycharm files
 .idea/
 
+#Postgresql DATA
+.data/
+
 # Distribution / packaging
 .Python
 build/

@@ -6,15 +6,21 @@ sudo lsof -i TCP
 
 sudo kill 320
 
-docker system prune
 
 docker rm -vf $(docker ps -a -q)
-
 docker rmi -f $(docker images -a -q)
+docker system prune
 
 docker exec -it db psql -h 0.0.0.0 -U postgres
-
 postgres=# \l
+quit
+docker exec -it db psql -h 0.0.0.0 -U postgres -d simple_blog
+
+
+\conninfo
+You are connected to database "simple_blog" as user "postgres" on host "0.0.0.0" at port "5432".
+  \d[S+]                 list tables, views, and sequences
+
 
 postgres=# CREATE DATABASE simple_blog;
 
@@ -31,3 +37,30 @@ docker exec -it app python /app/manage.py createsuperuser
 
 local imac в папке с проектом in terminal
 git init
+
+root@194-58-104-150:~/.ssh# lsb_release -a
+root@194-58-104-150:~/.ssh# sudo apt install docker.io
+root@194-58-104-150:~/.ssh# sudo systemctl enable docker
+root@194-58-104-150:~# sudo systemctl status docker
+root@194-58-104-150:~# sudo docker run hello-world
+()
+root@194-58-104-150:/home/SimpleBlog# sudo apt install docker-compose
+
+root@194-58-104-150:/home# git clone git@github.com:mkz-mkz/SimpleBlog.git
+
+root@194-58-104-150:/home/SimpleBlog# docker build . -t app
+
+root@194-58-104-150:/bin# ls -a
+sudo rm -rf docker-compose
+больше нет докер-компоуза)
+
+sudo curl -SL https://github.com/docker/compose/releases/download/v2.24.3/docker-compose-linux-x86_64 -o /bin/docker-compose
+root@194-58-104-150:/# cd bin
+root@194-58-104-150:/bin# sudo chmod +x docker-compose
+root@194-58-104-150:/bin# docker-compose --version
+Docker Compose version v2.24.3
+
+добавляем айпи к разрешенным хостам
+194.58.104.150
+
+docker-compose up --force-recreate
