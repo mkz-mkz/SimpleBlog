@@ -8,6 +8,8 @@ ENV PYTHONUNBUFFERED=1
 # Set work directory
 WORKDIR /app
 
+RUN mkdir /app/static && mkdir /app/media
+
 COPY requirements.txt requirements.txt
 # Install dependencies FIXME
 RUN pip install --upgrade pip

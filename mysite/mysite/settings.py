@@ -34,6 +34,8 @@ ALLOWED_HOSTS = [
     "0.0.0.0",
 ]
 
+STATIC_ROOT = '/app/static/'
+MEDIA_ROOT = '/app/media/'
 
 # Application definition
 
@@ -90,10 +92,10 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "simple_blog",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "db",
+        "NAME": os.getenv('POSTGRES_DB'),
+        "USER": os.getenv('POSTGRES_USER'),
+        "PASSWORD": os.getenv('POSTGRES_PASSWORD'),
+        "HOST": os.getenv('POSTGRES_HOST'),
         "PORT": 5432,
     }
 }

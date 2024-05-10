@@ -11,6 +11,8 @@ __pycache__/
 #Postgresql DATA
 .data/
 
+.commands
+
 # Distribution / packaging
 .Python
 build/

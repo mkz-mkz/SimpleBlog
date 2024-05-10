@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.9'
 
 services:
 
@@ -7,14 +7,11 @@ services:
     container_name: db
     restart: always
     volumes:
-      - .data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=simple_blog
-      - POSTGRES_USER=postgres
-      - postgres_PASSWORD=postgres
-      - POSTGRES_HOST_AUTH_METHOD=trust
+      - db_data:/var/lib/postgresql/data
+    env_file:
+      - .env
     ports:
-      - "5432:5432"
+      - 5432:5432
 
   app:
     container_name: app
@@ -26,9 +23,30 @@ services:
       - --bind
       - 0.0.0.0:8000
     restart: always
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
     env_file:
       - .env
     ports:
-      - "8000:8000"
+      - 8000:8000
     depends_on:
       - db
+
+  nginx:
+    build:
+      context: ./proxy
+    restart: always
+    container_name: app_nginx
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    depends_on:
+      - app
+    ports:
+      - 80:80
+
+volumes:
+  static_volume:
+  media_volume:
+  db_data:
