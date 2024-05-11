@@ -12,6 +12,8 @@ __pycache__/
 .data/
 
 .commands
+# useful videos on youtube related to the project
+.useful_videos
 
 # Distribution / packaging
 .Python
