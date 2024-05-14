@@ -3,16 +3,11 @@ version: '3.9'
 services:
 
   db:
-    image: postgres:14.5
+    image: postgres:14-alpine
     container_name: db
     environment:
-      - POSTGRES_HOST:${POSTGRES_HOST}
-      - POSTGRES_DB:${POSTGRES_DB}
-      - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     restart: always
-    volumes:
-      - db_data:/var/lib/postgresql/data
     env_file:
       - .env
     ports:
@@ -54,4 +49,3 @@ services:
 volumes:
   static_volume:
   media_volume:
-  db_data:
