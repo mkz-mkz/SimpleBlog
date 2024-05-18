@@ -1,5 +1,9 @@
 server {
-    listen ${LISTEN_PORT};
+    listen ${LISTEN_PORT} ssl;
+
+    server_name ${REG_DOMAIN};
+    ssl_certificate /etc/ssl/my_domain.crt;
+    ssl_certificate_key /etc/ssl/my_domain.key;
 
     location /static/ {
         alias /app/static/;

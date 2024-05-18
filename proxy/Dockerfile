@@ -12,4 +12,7 @@ RUN touch /etc/nginx/conf.d/default.conf
 COPY ./proxy_params /etc/nginx/
 COPY ./default.conf.tpl /etc/nginx/
 
+COPY ./my_domain.crt /etc/ssl/my_domain.crt
+COPY ./my_domain.key /etc/ssl/my_domain.key
+
 ENTRYPOINT ["sh", "-c", "/proxy_start.sh"]
