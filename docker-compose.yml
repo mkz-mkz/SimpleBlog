@@ -14,7 +14,7 @@ services:
       - 5432:5432
 
   app_main:
-    container_name: app
+    container_name: app_main
     build:
       dockerfile: ./Dockerfile
     command:
