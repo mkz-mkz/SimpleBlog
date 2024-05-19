@@ -4,7 +4,7 @@ services:
 
   dbp:
     image: postgres:14-alpine
-    container_name: db
+    container_name: dbp
     environment:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     restart: always
@@ -13,7 +13,7 @@ services:
     ports:
       - 5432:5432
 
-  app:
+  app_main:
     container_name: app
     build:
       dockerfile: ./Dockerfile
@@ -42,7 +42,7 @@ services:
       - static_volume:/app/static
       - media_volume:/app/media
     depends_on:
-      - app
+      - app_main
       - dbp
     ports:
       - 80:80
