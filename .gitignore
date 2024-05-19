@@ -12,6 +12,11 @@ __pycache__/
 .data/
 
 .commands
+
+#CERTIFICATES!
+proxy/.makz_space.crt
+proxy/.makz_space.key
+
 # useful videos on youtube related to the project
 .useful_videos
 
