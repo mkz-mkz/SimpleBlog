@@ -1,7 +1,5 @@
 server {
-    listen ${LISTEN_PORT} ;
-
-    server_name ${REG_DOMAIN};
+    listen 80;
 
     location /static/ {
         alias /app/static/;

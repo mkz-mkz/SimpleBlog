@@ -14,6 +14,7 @@ __pycache__/
 .commands
 
 #CERTIFICATES!
+certificate
 proxy/.makz_space.crt
 proxy/.makz_space.key
 

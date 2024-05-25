@@ -2,19 +2,22 @@ version: '3.9'
 
 services:
 
-  dbp:
+  db:
     image: postgres:14-alpine
-    container_name: dbp
+    container_name: db
     environment:
+      - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     restart: always
     env_file:
       - .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
     ports:
       - 5432:5432
 
-  app_main:
-    container_name: app_main
+  app:
+    container_name: app
     build:
       dockerfile: ./Dockerfile
     command:
@@ -31,22 +34,23 @@ services:
     ports:
       - 8000:8000
     depends_on:
-      - dbp
+      - db
 
   nginx:
     build:
       context: ./proxy
+    container_name: ngx
     restart: always
-    container_name: app_nginx
     volumes:
       - static_volume:/app/static
       - media_volume:/app/media
-    depends_on:
-      - app_main
-      - dbp
     ports:
       - 80:80
+    depends_on:
+      - db
+      - app
 
 volumes:
   static_volume:
   media_volume:
+  pg_data:
